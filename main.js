@@ -4,6 +4,8 @@ const path = require('path')
 
 app.commandLine.appendSwitch('--allow-running-insecure-content');
 app.commandLine.appendSwitch('--ignore-certificate-errors');
+app.commandLine.appendSwitch('--widevine-cdm-path', path.join(__dirname, 'widevine')); 
+app.commandLine.appendSwitch('--widevine-cdm-version', '4.10.1582.2')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -20,6 +22,7 @@ function createWindow () {
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });
   // and load the index.html of the app.
+  console.log(process.versions)
   mainWindow.loadURL('https://open.spotify.com/')
 
   // Open the DevTools.

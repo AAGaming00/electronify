@@ -1,5 +1,14 @@
-window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
+
+function checkFlag() {
+  if(!document.querySelector('.Root__top-bar > header')) {
+     window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
+  } else {
+    injectTitleBar()
+  }
+}
+checkFlag()
+
+function injectTitleBar() {
         var header = document.querySelector('.Root__top-bar > header')
         var drag = document.createElement('div')
         header.id = 'titlebar'
@@ -93,7 +102,4 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
     observer.observe(target, { subtree: true, characterData: true, childList: true });
-    }, 3000);
-
-});
-
+  }

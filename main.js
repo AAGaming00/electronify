@@ -17,10 +17,13 @@ function createWindow () {
     minWidth: 800,
     minHeight: 600,
     frame: false,
+    backgroundColor: '#000000ab',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       plugins: true,
-      enableRemoteModule: true
+      enableRemoteModule: true,
+      nodeIntegration: true,
+      contextIsolation: false
     }
   })
   mainWindow.blurType = "blurbehind";

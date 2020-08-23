@@ -5,25 +5,34 @@ html {
     background-color: transparent !important;
 }
 
-  
-
+/* remove install app banner */
+._435d17cddae8437d6182df7623d0c41b-scss {
+  display: none;
+}
+/* titlebar */
   #titlebar {
     padding: 4px;
     display: flex !important;
   }
-  
-  #titlebar #drag-region {
+  #titlebar > *:not(._21f29c9d16bf3b2adbeb2fe04bdcbe8b-scss, .e4f501edc8cac9de3fa6b6c883cf5b72-scss){
+    -webkit-app-region: no-drag;
+  }
+  #titlebar {
     width: 100%;
     height: 100%;
-    -webkit-app-region: drag;
+    -webkit-app-region: drag
+  }
+  .e4f501edc8cac9de3fa6b6c883cf5b72-scss, ._09de7f5685fbf244f783483fedae7419-scss {
+    -webkit-app-region: drag !important;
+  }
+  ._26d9e31a05dd5fba3afe1b281ae2cf9e-scss, ._3a2dbd61921e0194803774bdcfb4a9f3-scss, ._09de7f5685fbf244f783483fedae7419-scss > * {
+    -webkit-app-region: no-drag !important;
   }
 
-
-  
   #window-controls {
     display: grid;
     grid-template-columns: repeat(3, 46px);
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     height: 100%;
@@ -46,14 +55,6 @@ html {
   #close-button {
     grid-column: 3;
   }
-  @media (-webkit-device-pixel-ratio: 1.5), (device-pixel-ratio: 1.5),
-(-webkit-device-pixel-ratio: 2), (device-pixel-ratio: 2),
-(-webkit-device-pixel-ratio: 3), (device-pixel-ratio: 3) {
-  #window-controls .icon {
-    width: 10px;
-    height: 10px;
-  }
-}
 
 #window-controls {
     -webkit-app-region: no-drag;
@@ -67,6 +68,9 @@ html {
   }
   #window-controls .button:active {
     background: rgba(255,255,255,0.2);
+  }
+  #window-controls .button {
+    fill: white;
   }
   
   #close-button:hover {
@@ -88,26 +92,7 @@ html {
     grid-template-columns: auto 138px;
   }
   
-  #window-title {
-    grid-column: 1;
-    display: flex;
-    align-items: center;
-    margin-left: 8px;
-    overflow: hidden;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 12px;
-    color: white;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-  }
-  
-  #window-title span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 1.5;
-  }
+
 
   .maximized #titlebar {
     width: 100%;

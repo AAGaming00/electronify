@@ -97,16 +97,12 @@ window.addEventListener('DOMContentLoaded', () => {
     `;
 
     document.body.appendChild(style);
-    var header = document.querySelector('main-view-container__scroll-node-child-spacer')[0]
+    var header = document.querySelector('.Root__top-bar > header')
     var drag = document.createElement('div')
     header.id = 'titlebar'
-    drag.id = 'drag-region'
-    header.appendChild(drag)
+    // drag.id = 'drag-region'
+    // document.querySelector('[data-testid="topbar-content-wrapper"]').parentNode.insertBefore(drag, document.querySelector('[data-testid="topbar-content-wrapper"]').nextSibling)
     header.insertAdjacentHTML('beforeend', `
-      <div id="window-title">
-        <span>Electron quick start</span>
-      </div>
-
       <div id="window-controls">
         <div class="button" id="min-button">
           <svg width="11" height="1" viewBox="0 0 11 1">
@@ -190,8 +186,6 @@ var observer = new window.WebKitMutationObserver(function(mutations) {
       if (mutation.target.textContent !== lastTitle) {
       mutation.target.textContent = mutation.target.textContent.replace('Spotify – Web Player', 'Spotify')
       lastTitle = mutation.target.textContent;
-      document.querySelector('#window-title > span').textContent = mutation.target.textContent
-        console.log('new title:', mutation.target.textContent);
       }
     });
 });

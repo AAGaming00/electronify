@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, session} = require('electron')
+const {app, session, ipcMain} = require('electron')
 const {BrowserWindow} = require('glasstron')
 const path = require('path')
 const fs = require('fs')
@@ -33,7 +33,7 @@ function createWindow () {
     details.requestHeaders['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36 Edg/84.0.522.63";
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });
-
+  //load main stylesheet
   mainWindow.webContents.on('dom-ready', () => {
     mainWindow.webContents.insertCSS(fs.readFileSync(path.join(__dirname, './main.css'), 'utf8'));
   });

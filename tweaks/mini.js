@@ -40,10 +40,10 @@ button.addEventListener ("click", async function() {
         setTimeout(() => browser.setMaximumSize(100000000, 100000000), 200); // why cant i just set it false?
         browser.setMinimumSize(olddim.minWidth, olddim.minHeight)
         setTimeout(() => browser.setSize(olddim.width, olddim.height), 300); // electron bug
-        sleep(400)
+        await sleep(400)
         document.body.classList.add('miniplayerEnd')
         document.body.classList.add('miniplayerStarting')
-        sleep(100)
+        await sleep(100)
         document.body.classList.remove('miniplayerEnd')
         browser.setSize(olddim.width, olddim.height)
         document.body.classList.remove('miniplayerStarting')
@@ -54,7 +54,7 @@ button.addEventListener ("click", async function() {
         document.body.classList.add('miniplayer')
         document.body.classList.add('miniplayerStarting')
         document.body.classList.add('miniplayerStart')
-        sleep(700)
+        await sleep(700)
         console.log(win)
         olddim.width = browser.getSize()[0]
         olddim.height = browser.getSize()[1]
@@ -62,12 +62,12 @@ button.addEventListener ("click", async function() {
         olddim.minHeight = browser.getMinimumSize()[1]
         browser.setMinimumSize(width, height)
         setTimeout(() => browser.setMaximumSize(100000000, height), 200); // :angery:
-        sleep(100)
+        await sleep(100)
         document.body.classList.remove('miniplayerStarting')
         document.body.classList.add('miniplayerStarted')
-        sleep(100)
+        await sleep(100)
         browser.setSize(width, height)
-        sleep(200)
+        await sleep(200)
         document.body.classList.remove('miniplayerStarted')  
         resetinterval.maximize = win.on('maximize',unmaximize, false);
     }

@@ -16,7 +16,7 @@
     opacity: 0 !important;
 }
 .miniplayer .main-view-container {
-    transform: translateY(150%);
+    transform: translateY(-150%);
 }
 .miniplayerStarted *, .miniplayerEnd * {
     transition: unset !important;

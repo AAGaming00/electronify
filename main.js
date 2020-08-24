@@ -21,7 +21,7 @@ function createWindow () {
       preload: join(__dirname, 'preload.js'),
       plugins: true,
       enableRemoteModule: true,
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: false
     }
   })

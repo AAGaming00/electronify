@@ -1,0 +1,49 @@
+.miniplayer .Root__nav-bar {
+    transform: translateX(-100%);
+}
+.miniplayer ._26d9e31a05dd5fba3afe1b281ae2cf9e-scss, .miniplayer ._48e360f8825a4f1e777dae4da035dc61-scss, .miniplayer ._3a2dbd61921e0194803774bdcfb4a9f3-scss {
+    transform: translateY(-150%);
+}
+.miniplayer .Root__top-bar {
+    width: 100%;
+    grid-area: unset;
+    position: absolute;
+}
+.miniplayer #titlebar {
+    max-width: unset;
+}
+.miniplayer .main-view-container {
+    transform: translateY(100%);
+}
+.miniplayerStart * {
+    transition: all 3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+/*Miniplayer*/
+
+.miniplayerStart:not(.miniplayerStarting) .Root__now-playing-bar {
+    display: block !important;
+    position: absolute !important;
+    top: 61px;
+    left: 0px;
+    width: 100% !important;
+    height: 100% !important;
+    grid-area: unset;
+    transform: translateY(-5%);
+    transition: unset;
+}
+.miniplayerStart:not(.miniplayerStarting) .Root__now-playing-bar > * {
+    transition: all 3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.miniplayerStarting .Root__now-playing-bar {
+    transform: translateY(-650%)
+}
+.miniplayerStart .Root__top-bar {
+    max-width: unset;
+    height: 5%;
+}
+.miniplayer #max-button, .miniplayer #restore-button {
+    transform: translateY(-100%);
+}
+.miniplayerStart #min-button {
+    grid-column: 2 / auto !important;
+}

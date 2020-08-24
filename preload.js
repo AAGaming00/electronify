@@ -1,14 +1,12 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
 
-// Load the core plugins
 window.addEventListener('DOMContentLoaded', () => {
 require('./tweaks/adblock')
 
 require('./tweaks/titlebar')
 
-require('./plugins/visualizer')
-
+require('./tweaks/mini.js')
 // open popups in external browser
 let shell = require('electron').shell
 document.addEventListener('click', function (event) {

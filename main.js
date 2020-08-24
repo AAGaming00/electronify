@@ -1,13 +1,12 @@
 // Modules to control application life and create native browser window
-const {app, session, ipcMain} = require('electron')
+const {app, session} = require('electron')
 const {BrowserWindow} = require('glasstron')
-const path = require('path')
-const fs = require('fs')
-
+const {join} = require('path')
+const {readFileSync} = require('fs')
 app.commandLine.appendSwitch("--enable-transparent-visuals");
 app.commandLine.appendSwitch('--allow-running-insecure-content');
 app.commandLine.appendSwitch('--ignore-certificate-errors');
-app.commandLine.appendSwitch('--widevine-cdm-path', path.join(__dirname, 'widevine')); 
+app.commandLine.appendSwitch('--widevine-cdm-path', join(__dirname, 'widevine')); 
 app.commandLine.appendSwitch('--widevine-cdm-version', '4.10.1582.2')
 function createWindow () {
   // Create the browser window.
@@ -19,7 +18,7 @@ function createWindow () {
     frame: false,
     backgroundColor: '#000000ab',
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
+      preload: join(__dirname, 'preload.js'),
       plugins: true,
       enableRemoteModule: true,
       nodeIntegration: true,
@@ -38,7 +37,8 @@ function createWindow () {
   });
   //load main stylesheet
   mainWindow.webContents.on('dom-ready', () => {
-    mainWindow.webContents.insertCSS(fs.readFileSync(path.join(__dirname, './main.css'), 'utf8'));
+    mainWindow.webContents.insertCSS(readFileSync(join(__dirname, './main.css'), 'utf8'));
+    mainWindow.webContents.insertCSS(readFileSync(join(__dirname, './tweaks/miniplayer.css'), 'utf8'));
   });
   // and load the index.html of the app.
   console.log(process.versions)

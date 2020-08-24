@@ -37,7 +37,7 @@
     transform: translateY(-5%);
 }
 .miniplayerStarting .Root__now-playing-bar {
-    transform: translateY(-650%)
+    transform: translateY(-85vh)
 }
 .miniplayerStart .Root__top-bar {
     max-width: unset;
@@ -46,6 +46,6 @@
 .miniplayer #max-button, .miniplayer #restore-button {
     transform: translateY(-100%);
 }
-.miniplayerStart #min-button {
+.miniplayerStart:not(.miniplayerStarting) #min-button {
     grid-column: 2 / auto !important;
 }

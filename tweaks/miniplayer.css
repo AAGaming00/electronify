@@ -12,6 +12,9 @@
 .miniplayer #titlebar {
     max-width: unset;
 }
+.miniplayer ._21f29c9d16bf3b2adbeb2fe04bdcbe8b-scss {
+    opacity: 0 !important;
+}
 .miniplayer .main-view-container {
     transform: translateY(150%);
 }

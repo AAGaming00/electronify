@@ -13,10 +13,10 @@
     max-width: unset;
 }
 .miniplayer .main-view-container {
-    transform: translateY(100%);
+    transform: translateY(150%);
 }
-.miniplayerStart * {
-    transition: all 3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+.miniplayerStarted *, .miniplayerEnd * {
+    transition: unset !important;
 }
 /*Miniplayer*/
 
@@ -29,10 +29,6 @@
     height: 100% !important;
     grid-area: unset;
     transform: translateY(-5%);
-    transition: unset;
-}
-.miniplayerStart:not(.miniplayerStarting) .Root__now-playing-bar > * {
-    transition: all 3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 .miniplayerStarting .Root__now-playing-bar {
     transform: translateY(-650%)

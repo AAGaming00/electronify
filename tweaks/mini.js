@@ -8,7 +8,10 @@ function checkFlag() {
   }
   checkFlag()
   
-
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
 
 // 1. Create the button
 function inject() {
@@ -28,7 +31,7 @@ function unmaximize(e) {
 const width = 1280;
 const minWidth = 800;
 const height = 120;
-button.addEventListener ("click", function() {
+button.addEventListener ("click", async function() {
     win = remote.getCurrentWindow()
     browser = win.webContents.getOwnerBrowserWindow()
     if (document.querySelector('.miniplayer')) {
@@ -37,17 +40,21 @@ button.addEventListener ("click", function() {
         setTimeout(() => browser.setMaximumSize(100000000, 100000000), 200); // why cant i just set it false?
         browser.setMinimumSize(olddim.minWidth, olddim.minHeight)
         setTimeout(() => browser.setSize(olddim.width, olddim.height), 300); // electron bug
-        setTimeout(() => {
-            browser.setSize(olddim.width, olddim.height)
-            document.body.classList.remove('miniplayerStart')
-            document.body.classList.remove('miniplayer')
-        }, 400); // electron bug
+        sleep(400)
+        document.body.classList.add('miniplayerEnd')
+        document.body.classList.add('miniplayerStarting')
+        sleep(100)
+        document.body.classList.remove('miniplayerEnd')
+        browser.setSize(olddim.width, olddim.height)
+        document.body.classList.remove('miniplayerStarting')
+        document.body.classList.remove('miniplayerStart')
+        document.body.classList.remove('miniplayer')
     }
     else {
         document.body.classList.add('miniplayer')
         document.body.classList.add('miniplayerStarting')
-        setTimeout(() => {
-            document.body.classList.add('miniplayerStart')
+        document.body.classList.add('miniplayerStart')
+        sleep(700)
             console.log(win)
             olddim.width = browser.getSize()[0]
             olddim.height = browser.getSize()[1]
@@ -55,12 +62,14 @@ button.addEventListener ("click", function() {
             olddim.minHeight = browser.getMinimumSize()[1]
             browser.setMinimumSize(width, height)
             setTimeout(() => browser.setMaximumSize(100000000, height), 200); // :angery:
-            setTimeout(() => {
-                document.body.classList.remove('miniplayerStarting')
-                browser.setSize(width, height)
-            }, 3000);
+            sleep(100)
+            document.body.classList.remove('miniplayerStarting')
+            document.body.classList.add('miniplayerStarted')
+            sleep(100)
+            browser.setSize(width, height)
+            sleep(200)
+            document.body.classList.remove('miniplayerStarted')  
             resetinterval.maximize = win.on('maximize',unmaximize, false);
-        }, 2000);
     }
 });
 }

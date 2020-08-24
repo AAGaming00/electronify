@@ -55,21 +55,21 @@ button.addEventListener ("click", async function() {
         document.body.classList.add('miniplayerStarting')
         document.body.classList.add('miniplayerStart')
         sleep(700)
-            console.log(win)
-            olddim.width = browser.getSize()[0]
-            olddim.height = browser.getSize()[1]
-            olddim.minWidth = browser.getMinimumSize()[0]
-            olddim.minHeight = browser.getMinimumSize()[1]
-            browser.setMinimumSize(width, height)
-            setTimeout(() => browser.setMaximumSize(100000000, height), 200); // :angery:
-            sleep(100)
-            document.body.classList.remove('miniplayerStarting')
-            document.body.classList.add('miniplayerStarted')
-            sleep(100)
-            browser.setSize(width, height)
-            sleep(200)
-            document.body.classList.remove('miniplayerStarted')  
-            resetinterval.maximize = win.on('maximize',unmaximize, false);
+        console.log(win)
+        olddim.width = browser.getSize()[0]
+        olddim.height = browser.getSize()[1]
+        olddim.minWidth = browser.getMinimumSize()[0]
+        olddim.minHeight = browser.getMinimumSize()[1]
+        browser.setMinimumSize(width, height)
+        setTimeout(() => browser.setMaximumSize(100000000, height), 200); // :angery:
+        sleep(100)
+        document.body.classList.remove('miniplayerStarting')
+        document.body.classList.add('miniplayerStarted')
+        sleep(100)
+        browser.setSize(width, height)
+        sleep(200)
+        document.body.classList.remove('miniplayerStarted')  
+        resetinterval.maximize = win.on('maximize',unmaximize, false);
     }
 });
 }

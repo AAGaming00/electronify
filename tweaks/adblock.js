@@ -1,21 +1,13 @@
 
-// set up the mutation observer
-var observer = new MutationObserver(function (mutations, me) {
-    // `mutations` is an array of mutations that occurred
-    // `me` is the MutationObserver instance
-    var canvas = document.querySelector('.Root__top-bar > header')
-    if (canvas) {
-      inject();
-      me.disconnect(); // stop observing
-      return;
+function checkFlag() {
+    if(!document.querySelector('.Root__top-bar > header')) {
+       window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
+    } else {
+      inject()
     }
-  });
+  }
+  checkFlag()
   
-  // start observing
-  observer.observe(document, {
-    childList: true,
-    subtree: true
-  });
 async function inject() {
 
 async function queryAsync(query) {
@@ -111,4 +103,5 @@ style.innerHTML = `
 `;
 
 document.body.appendChild(style);
+
 }

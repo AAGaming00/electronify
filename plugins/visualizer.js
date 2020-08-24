@@ -105,22 +105,18 @@ function start(){
     if(anim){
         window.cancelAnimationFrame(anim);
     }
-    desktopCapturer.getSources({ types: ['window', 'screen'] }).then(async sources => {
+    desktopCapturer.getSources({ types: ['screen'] }).then(async sources => {
         console.log(sources);
         
-        for (const source of sources) {
-            // Filter: main screen
-            if (source.name === document.title) {
-                try{
                     const stream = await navigator.mediaDevices.getUserMedia({
                         audio: {                                
-                        chromeMediaSource: 'desktop',
-                        chromeMediaSourceId: source.id,
+                        chromeMediaSource: sources[0].name,
+                        chromeMediaSourceId: sources[0].id,
                         },
                         video: {
                             mandatory: {
-                            chromeMediaSource: 'desktop',
-                            chromeMediaSourceId: source.id,
+                            chromeMediaSource: sources[0].name,
+                            chromeMediaSourceId: sources[0].id,
                             minWidth: 1280,
                             maxWidth: 4000,
                             minHeight: 720,
@@ -129,11 +125,6 @@ function start(){
                     }
                     });
                     onchange(stream);
-                }catch (e) {
-                    console.log(e)
-                }
-            }
-        }
 })
 }
 

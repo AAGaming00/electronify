@@ -15,7 +15,7 @@
 .miniplayer ._21f29c9d16bf3b2adbeb2fe04bdcbe8b-scss {
     opacity: 0 !important;
 }
-.miniplayer .main-view-container {
+.miniplayer .main-view-container, .miniplayer ._3c08e30e0b5018cc15edf990e21d3dc5-scss {
     transform: translateY(-150%);
 }
 .miniplayerStarted *, .miniplayerEnd * {

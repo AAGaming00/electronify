@@ -20,7 +20,7 @@
     "electron": "^9.0.0"
   },
   "dependencies": {
-    "electron": "^9.0.0",
+    "electron": "https://github.com/castlabs/electron-releases#9.2.1-wvvmp",
     "glasstron": "https://github.com/AryToNeX/Glasstron"
   }
 }

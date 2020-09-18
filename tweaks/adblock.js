@@ -57,41 +57,41 @@ inject({
     }
 });
 
-let playInterval;
-new MutationObserver(() => {
-    const link = document.querySelector('.now-playing > a');
+// let playInterval;
+// new MutationObserver(() => {
+//     const link = document.querySelector('.now-playing > a');
 
-    if (link) {
+//     if (link) {
 
-        if (!audio) {
-            return console.error('Audio-element not found!');
-        }
+//         if (!audio) {
+//             return console.error('Audio-element not found!');
+//         }
 
-        if (!playButton) {
-            return console.error('Play-button not found!');
-        }
+//         if (!playButton) {
+//             return console.error('Play-button not found!');
+//         }
 
-        // console.log('Ad found', audio, playButton, nowPlayingBar);
+//         // console.log('Ad found', audio, playButton, nowPlayingBar);
 
-        audio.src = '';
-        playButton.click();
-        if (!playInterval) {
-            playInterval = setInterval(() => {
-                if (!document.querySelector('.now-playing > a') && playButton.title === 'Pause') {
-                    clearInterval(playInterval);
-                    playInterval = null;
-                } else {
-                    playButton.click();
-                }
-            }, 500);
-        }
-    }
-}).observe(nowPlayingBar, {
-    characterData: true,
-    childList: true,
-    attributes: true,
-    subtree: true
-});
+//         audio.src = '';
+//         playButton.click();
+//         if (!playInterval) {
+//             playInterval = setInterval(() => {
+//                 if (!document.querySelector('.now-playing > a') && playButton.title === 'Pause') {
+//                     clearInterval(playInterval);
+//                     playInterval = null;
+//                 } else {
+//                     playButton.click();
+//                 }
+//             }, 500);
+//         }
+//     }
+// }).observe(nowPlayingBar, {
+//     characterData: true,
+//     childList: true,
+//     attributes: true,
+//     subtree: true
+// });
 
 // Hide upgrade-button and captcha-errors, we don't what to see that.
 const style = document.createElement('style');

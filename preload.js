@@ -1,7 +1,16 @@
 // All of the Node.js APIs are available in the preload process.
 // It has the same sandbox as a Chrome extension.
-
-window.addEventListener('DOMContentLoaded', () => {
+(async function() {
+window.addEventListener('DOMContentLoaded', async () => {
+  const { sleep } = require('./util')
+  console.log(sleep)
+  
+while (typeof window.webpackJsonp === "undefined") {
+  await sleep(1);
+}
+  const webpack = require('./webpack')
+console.log(webpack)
+window.webpack = webpack
 require('./tweaks/adblock')
 
 require('./tweaks/titlebar')
@@ -16,3 +25,4 @@ document.addEventListener('click', function (event) {
   }
 })
 })
+}());

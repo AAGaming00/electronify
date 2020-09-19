@@ -1,7 +1,7 @@
 .miniplayer .Root__nav-bar {
     transform: translateX(-100%);
 }
-.miniplayer ey-historyButtons {
+.miniplayer ey-historyButtons, .miniplayer ey-dropdown {
     transform: translateY(-150%);
 }
 .miniplayer .Root__top-bar {

@@ -10,7 +10,7 @@
     }
 
     const {readFileSync} = require('fs')
-    const {join} = require('pat')
+    const {join} = require('path')
 
     const normalize = require('./core/class-normalizer')
 
@@ -27,7 +27,9 @@
       head.appendChild(sty);
     }
 
+    loadCSS('./main.css')
 
+    loadCSS('./tweaks/miniplayer.css')
 
     require('./tweaks/adblock');
 

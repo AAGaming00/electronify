@@ -35,11 +35,6 @@ function createWindow () {
     details.requestHeaders['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36 Edg/84.0.522.63";
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });
-  //load main stylesheet
-  mainWindow.webContents.on('dom-ready', () => {
-    mainWindow.webContents.insertCSS(readFileSync(join(__dirname, './main.css'), 'utf8'));
-    mainWindow.webContents.insertCSS(readFileSync(join(__dirname, './tweaks/miniplayer.css'), 'utf8'));
-  });
   // and load the index.html of the app.
   console.log(process.versions)
   mainWindow.loadURL('https://open.spotify.com/')

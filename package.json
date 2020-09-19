@@ -17,7 +17,7 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^9.0.0",
+    "electron": "^10.1.2",
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
@@ -26,7 +26,6 @@
     "eslint-plugin-react-hooks": "^4.1.2"
   },
   "dependencies": {
-    "electron": "https://github.com/castlabs/electron-releases#9.2.1-wvvmp",
     "glasstron": "https://github.com/AryToNeX/Glasstron"
   }
 }

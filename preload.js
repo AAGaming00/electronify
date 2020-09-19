@@ -9,7 +9,25 @@
       await sleep(1);
     }
 
-    require('./core/class-normalizer')
+    const {readFileSync} = require('fs')
+    const {join} = require('pat')
+
+    const normalize = require('./core/class-normalizer')
+
+    function loadCSS(path) {
+      var head = document.getElementsByTagName('head')[0];
+      var sty = document.createElement('style');
+      sty.type = 'text/css';
+      var css = normalize(readFileSync(join(__dirname, path), 'utf8'));
+      if (sty.styleSheet){
+        sty.styleSheet.cssText = css;
+      } else {
+        sty.appendChild(document.createTextNode(css));
+      }
+      head.appendChild(sty);
+    }
+
+
 
     require('./tweaks/adblock');
 

@@ -44,8 +44,11 @@ button.addEventListener ("click", async function() {
         document.body.classList.remove('miniplayerStarting')
         document.body.classList.remove('miniplayerStart')
         document.body.classList.remove('miniplayer')
+        //document.body.classList.remove('preMiniplayer')
     }
     else {
+        //document.body.classList.add('preMiniplayer')
+//        await sleep(1000)
         document.body.classList.add('miniplayer')
         document.body.classList.add('miniplayerStarting')
         document.body.classList.add('miniplayerStart')

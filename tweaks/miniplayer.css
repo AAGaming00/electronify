@@ -49,3 +49,7 @@
 .miniplayerStart:not(.miniplayerStarting) #min-button {
     grid-column: 2 / auto !important;
 }
+
+/* .preMiniplayer * {
+    transition: all 0.8s cubic-bezier(0.87, 0, 0.13, 1);
+  } */

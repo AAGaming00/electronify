@@ -1,6 +1,6 @@
 
 function checkFlag() {
-  if(!document.querySelector('.Root__top-bar > header')) {
+  if(!document.querySelector('.Root__top-bar > header > :nth-child(4)')) {
      window.setTimeout(checkFlag, 100); /* this checks the flag every 100 milliseconds*/
   } else {
     injectTitleBar()

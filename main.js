@@ -22,7 +22,8 @@ function createWindow () {
       plugins: true,
       enableRemoteModule: true,
       nodeIntegration: false,
-      contextIsolation: false
+      contextIsolation: false,
+      worldSafeExecuteJavaScript: true
     }
   })
   mainWindow.blurType = "blurbehind";
@@ -31,12 +32,16 @@ function createWindow () {
 	// might want to use 'blurbehind'
 	mainWindow.setBlur(true);
   mainWindow.webContents.userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36 Edg/84.0.522.63"
-  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+  const filter = {
+    urls: ['*://*.spotify.com/*']
+  }
+  session.defaultSession.webRequest.onBeforeSendHeaders(filter, (details, callback) => {
     details.requestHeaders['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36 Edg/84.0.522.63";
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });
   // and load the index.html of the app.
   console.log(process.versions)
+  require('react-devtools-electron')
   mainWindow.loadURL('https://open.spotify.com/')
 
   // Open the DevTools.

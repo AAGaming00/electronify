@@ -29,13 +29,17 @@
 
     loadCSS('./main.css')
 
-    loadCSS('./tweaks/miniplayer.css')
+    //loadCSS('./tweaks/miniplayer.css')
 
     require('./tweaks/adblock');
 
     require('./tweaks/titlebar');
 
-    require('./tweaks/mini.js');
+    //require('./tweaks/mini');
+
+    // require('./tweaks/audioviz');
+
+    // loadCSS('./tweaks/audioviz.css')
     // open popups in external browser
     const { shell } = require('electron');
     document.addEventListener('click', (event) => {

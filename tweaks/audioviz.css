@@ -1,0 +1,24 @@
+
+.vp-audioviz-goo {
+	display: none;
+}
+
+.vp-audioviz-visualizer {
+	align-items: flex-end;
+	display: flex;
+	filter: url(#vpVisualizerGoo);
+	position: relative;
+	/* top: 0;
+	right: 0;
+	bottom: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+	z-index: 1;
+}
+
+.vp-audioviz-bar {
+	background: #7289da;
+	box-sizing: border-box;
+	flex: 1;
+}

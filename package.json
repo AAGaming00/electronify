@@ -1,7 +1,7 @@
 {
   "name": "electronify",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Spotify client in Electron.",
   "main": "main.js",
   "scripts": {
     "start": "electron --enable-logging ."
@@ -9,24 +9,22 @@
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Spotify",
+    "React"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "AAGaming",
+  "license": "MIT",
   "devDependencies": {
-    "electron": "^10.1.2",
-    "eslint": "^7.9.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.2"
+    "electron": "https://github.com/castlabs/electron-releases#11.1.1-wvvmp",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0"
   },
   "dependencies": {
-    "glasstron": "https://github.com/AryToNeX/Glasstron",
-    "react-devtools-electron": "^4.7.0"
+    "electron-devtools-installer": "^3.1.1",
+    "glasstron": "https://github.com/AryToNeX/Glasstron"
   }
 }

@@ -1,20 +1,27 @@
 // Modules to control application life and create native browser window
-const {app, session} = require('electron')
-const {BrowserWindow} = require('glasstron')
+let BrowserWindow
+const {app, session, BrowserWindow: ElectronWindow} = require('electron')
+const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer')
+const {BrowserWindow: GlasstronWindow} = require('glasstron')
 const {join} = require('path')
 const {readFileSync} = require('fs')
-app.commandLine.appendSwitch("--enable-transparent-visuals");
-app.commandLine.appendSwitch('--allow-running-insecure-content');
-app.commandLine.appendSwitch('--ignore-certificate-errors');
-app.commandLine.appendSwitch('--widevine-cdm-path', join(__dirname, 'widevine')); 
-app.commandLine.appendSwitch('--widevine-cdm-version', '4.10.1582.2')
+// app.commandLine.appendSwitch("--enable-transparent-visuals");
+// app.commandLine.appendSwitch('--allow-running-insecure-content');
+// app.commandLine.appendSwitch('--ignore-certificate-errors');
+// app.commandLine.appendSwitch('--widevine-cdm-path', join(__dirname, 'widevine')); 
+// app.commandLine.appendSwitch('--widevine-cdm-version', '4.10.1582.2')
 function createWindow () {
   // Create the browser window.
+  if (process.platform !== 'linux') {
+    BrowserWindow = GlasstronWindow
+  } else {
+    BrowserWindow = ElectronWindow
+  }
   const mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
-    minWidth: 800,
-    minHeight: 600,
+    minWidth: 400,
+    minHeight: 400,
     frame: false,
     backgroundColor: '#000000ab',
     webPreferences: {
@@ -26,11 +33,13 @@ function createWindow () {
       worldSafeExecuteJavaScript: true
     }
   })
-  mainWindow.blurType = "blurbehind";
-	//              ^~~~~~~
-	// Windows 10 1803+; for older versions you
-	// might want to use 'blurbehind'
-	mainWindow.setBlur(true);
+  if (process.platform !== 'linux') {
+    mainWindow.blurType = "blurbehind";
+    //              ^~~~~~~
+    // Windows 10 1803+; for older versions you
+    // might want to use 'blurbehind'
+    mainWindow.setBlur(process.platform !== 'linux');
+  }
   mainWindow.webContents.userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36 Edg/84.0.522.63"
   const filter = {
     urls: ['*://*.spotify.com/*']
@@ -41,7 +50,6 @@ function createWindow () {
   });
   // and load the index.html of the app.
   console.log(process.versions)
-  require('react-devtools-electron')
   mainWindow.loadURL('https://open.spotify.com/')
 
   // Open the DevTools.
@@ -62,6 +70,9 @@ app.on('widevine-ready', (version, lastVersion) => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  installExtension(REACT_DEVELOPER_TOOLS)
+  .then((name) => console.log(`Added Extension:  ${name}`))
+  .catch((err) => console.log('An error occurred: ', err));
   setTimeout(
 		createWindow,
 		process.platform == "linux" ? 1000 : 0

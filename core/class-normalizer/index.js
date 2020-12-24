@@ -1,12 +1,12 @@
 const {findByProps} = require('../webpack')
 
-const reg = /((?<=ey-)[a-zA-Z0-9]*)/g
+const reg = /((?<=s-)[a-zA-Z0-9]*)/g
 module.exports = function(css) {
-    const array = css.match(/(ey-[a-zA-Z0-9]*)/g)
+    const array = css.match(/(s-[a-zA-Z0-9]*)/g)
     if (array !== null) {
         array.forEach((m) => {
             const prop = m.match(reg)
-            css = css.replace(m, '.' + findByProps(prop)[prop])
+            css = css.replace(m, '.' + findByProps(prop)?.[prop])
         })   
     }
     return css

@@ -4,9 +4,15 @@
 html {
     background-color: #000000ab !important;
 }
-
+body {
+  min-height: unset;
+  min-width: unset;
+}
+body>div:not([id]):not([class]) {
+  display: unset;
+}
 /* remove install app banner */
-ey-downloadItem {
+s-downloadItem {
   display: none;
 }
 /* titlebar */
@@ -14,7 +20,7 @@ ey-downloadItem {
     padding: 4px;
     display: flex !important;
   }
-  #titlebar > *:not(ey-background){
+  #titlebar > *:not(s-background){
     -webkit-app-region: no-drag;
   }
   #titlebar {
@@ -105,9 +111,9 @@ ey-downloadItem {
     display: none;
   }
 
-  * {
+  /* * {
     transition: all 0.8s cubic-bezier(0.87, 0, 0.13, 1);
-  }
+  } */
 
 
   .control-button {

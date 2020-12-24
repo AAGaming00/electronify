@@ -96,8 +96,7 @@
 // Hide upgrade-button and captcha-errors, we don't what to see that.
 const style = document.createElement('style');
 style.innerHTML = `
-    [aria-label="Upgrade to Premium"],
-    body > div:not(#main) {
+    [aria-label="Upgrade to Premium"] {
         display: none !important;
     }
 `;

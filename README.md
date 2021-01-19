@@ -1,1 +1,1 @@
-NOTE: you need to download [this](https://redirector.gvt1.com/edgedl/widevine-cdm/4.10.1582.2-win-x64.zip) and may need to replace the win-x64 in the url with your platform, then extract it into the widevine folder.
+NOTE: you need to download the latest widevine, then extract it into the widevine folder.
